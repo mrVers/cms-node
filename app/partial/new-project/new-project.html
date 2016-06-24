@@ -3,18 +3,21 @@
 	<div class="new-button" ui-sref="projects">/ discard</div>
 	<hr/>
 
-	<label>Title</label>
-    <input ng-model="project.title" type="text" class="form-control"/>
-    <br/>
-    <label>Content</label>
-    <textarea ng-model="project.body" class="form-control"></textarea>
-    <br/>
-    <label>Link</label>
-    <input ng-model="project.link" type="text" class="form-control"/>
-    <br/>
-	<label>Author</label>
-	<select ng-model="project.author" ng-options="author.name for author in authors" class="form-control"></select>
-	<br/>
-	<div class="btn btn-vintage pull-right" ng-click="onSave()" ng-disabled="isSaving">+ save</div>
-
+	<div ng-form name="myForm">
+		<label>Title</label>
+	    <input ng-model="project.title" type="text" class="form-control" required/>
+			<span ng-show="project.title.$touched && project.title.$invalid">The title is required.</span>
+	    <br/>
+	    <label>Content</label>
+	    <textarea ng-model="project.body" class="form-control" ng-minlength="3" ng-maxlength="8" required></textarea>
+				<span ng-show="project.body.$touched && project.body.$invalid">The title is required.</span>
+	    <br/>
+	    <label>Link</label>
+	    <input ng-model="project.link" type="url" class="form-control"/>
+	    <br/>
+		<label>Author</label>
+		<select ng-model="project.author" ng-options="author.name for author in authors" class="form-control"></select>
+		<br/>
+		<div class="btn btn-vintage pull-right" ng-click="onSave()" ng-disabled="isSaving">+ save</div>
+	</div>
 </div>

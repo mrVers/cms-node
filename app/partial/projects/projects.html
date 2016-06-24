@@ -2,8 +2,8 @@
 
     <h1>Projects</h1>
     <div class="new-button" ui-sref="new-project">+ create new</div>
+    <input type="text" class="search-form form-control" placeholder="Search projects" ng-model="searchTitle">
     <hr/>
-
     <table class="table">
         <thead>
             <tr>
@@ -16,19 +16,25 @@
                 <th>
                     Author
                 </th>
+                <th style="text-align:center">
+                    Status
+                </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr class="fancy" ng-repeat="project in projects">
-                <td>
-                    {{project.title}}
+            <tr class="fancy" ng-repeat="project in projects | filter:searchTitle">
+                <td class="title" ui-sref="edit-project({id:project._id})">
+                    <strong>{{project.title}}</strong>
                 </td>
                 <td>
                     {{project.dateCreated | date:'dd.MM.yyyy @ HH:mm'}}
                 </td>
                 <td>
                     {{project.author}}
+                </td>
+                <td width="70px">
+                    <div class="btn btn-xs btn-default" ng-class="{'btn-success': project.active}" ng-click="setActive(project)">Published</div>
                 </td>
                 <td style="text-align:right">
                     <div class="new-button" ui-sref="edit-project({id:project._id})">

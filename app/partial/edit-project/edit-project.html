@@ -3,18 +3,20 @@
 	<div class="new-button" ui-sref="projects">/ discard</div>
 	<hr/>
 
+<div ng-form name="myForm">
 	<label>Title</label>
-    <input ng-model="project.title" type="text" class="form-control"/>
+    <input ng-model="project.title" type="text" class="form-control" ng-required="required"/>
     <br/>
     <label>Content</label>
     <textarea ng-model="project.body" class="form-control"></textarea>
     <br/>
     <label>Link</label>
-    <input ng-model="project.link" type="text" class="form-control"/>
+    <input ng-model="project.link" type="url" class="form-control"/>
     <br/>
 	<label>Author</label>
 	<select ng-model="project.author" ng-options="author.name for author in authors" class="form-control"></select>
 	<br/>
-	<div class="btn btn-vintage pull-right" ng-click="onSave()" ng-disabled="isSaving">+ save</div>
+	</div>
+	<div class="btn btn-vintage pull-right" ng-click="myForm.$valid && saveClick()" ng-disabled="isSaving">+ update</div>
 
 </div>
