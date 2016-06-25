@@ -14,6 +14,7 @@ exports.init = function () {
 		server.use(bodyParser.json());
 		server.use(bodyParser.urlencoded({extended:true}));
 		server.use(cors());
+		server.use('/uploads', express.static('./uploads'));
 
 		server.listen(PORT, function () {
 

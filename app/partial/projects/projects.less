@@ -11,6 +11,19 @@
 
 }
 
+.new-button.home {
+
+	font-size: 22px;
+	font-weight: 300;
+	margin-left: 5px;
+}
+
+.new-button.home:hover {
+
+	border-bottom: 1px solid #bbb;
+	text-decoration: none;
+}
+
 .table .fancy {
 
 	background-color: #e7e7e7;
@@ -31,7 +44,7 @@
 
 .table > thead > tr > th {
     vertical-align: bottom;
-    border-bottom: 1px solid #fff;
+	padding-bottom: 12px;
 }
 
 .table > tbody > tr > td {
@@ -45,10 +58,14 @@
 }
 
 .btn-vintage:hover {
-    color: #fff;
+	color: #fff;
+	background-color: #DC8E7B;
+	transition: all 0.2s;
+}
+
+.btn-vintage.disabled {
+	color: #fff;
     background-color: #DC8E7B;
-		transition: all 0.2s;
-  //  border-color: #C77966;
 }
 
 .search-form {
@@ -56,4 +73,14 @@
 		float: right;
 		margin-top: -15px;
 
+}
+
+.no-results {
+	text-align: center;
+	margin-top: 100px;
+	font-size:16px;
+}
+
+.form-control.required, .form-control.ng-invalid-url, .form-control.ng-invalid-email {
+    border: 2px solid #ff9a82;
 }

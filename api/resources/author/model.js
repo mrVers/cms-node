@@ -2,15 +2,13 @@ const mongoose = require('mongoose');
 
 const Schema = new mongoose.Schema({
 
-	title 		: {type:String, required:true},
+	name 		: {type:String, required:true},
+	email		: String,
+	imageUrl 	: String,
 	body  		: String,
-	imageUrls 	: [String],
-	coverImage 	: String,
-	link		: String,
-	author		: {type:String, ref:'User'},
 	dateCreated	: {type:Date, default:Date.now},
 	active		: {type:Boolean, default:true}
 
 });
 
-mongoose.model('Project', Schema);
+mongoose.model('User', Schema);

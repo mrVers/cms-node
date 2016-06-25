@@ -1,22 +1,49 @@
 const server 	= require('../../server').server;
 const mongoose 	= require('mongoose');
+const multer  	= require('multer');
+const mime 		= require('mime');
+const crypto 	= require ("crypto");
+
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/')
+    },
+    filename: function (req, file, cb) {
+        crypto.pseudoRandomBytes(4, function (err, raw) {
+            cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+        });
+    }
+});
+
+const upload  = multer({ storage: storage });
+
 
 module.exports = function () {
+	
+    server.post('/upload', upload.single('file'), function(req,res){
+
+        console.log(req.file);
+        res.send(req.file);
+
+    });
+
 
 	server.get('/projects', function (req, res) {
 
 		const Project = mongoose.model('Project');
+		
+        const q = Project.find();
 
-		Project.find(function(err, docs){
+        q.populate('author');
 
-            if(!err){
+        q.exec()
+            .then((docs)=>{
                 res.send(docs);
-            }else{
-                res.sendStatus(400).send(err);
-                console.log(err);
-            }
-
-		});
+            })
+            .catch((err)=>{
+                res.status(400).send(err);
+            });
 
 	});
 
