@@ -5,7 +5,7 @@ angular.module('app').controller('NewProjectCtrl', function ($scope, projectServ
 	$scope.requiredFields = "";
 	$scope.isUploading = false;
     $scope.uploadData = {
-    	progress:0
+		progress: 0
     };
 
 	$scope.project = {
@@ -51,8 +51,8 @@ angular.module('app').controller('NewProjectCtrl', function ($scope, projectServ
 		$scope.isUploading = true;
 
 		Upload.upload({
-			url: 'http://localhost:3333/upload'
-			, data: {
+			url: 'http://localhost:3333/upload',
+			data: {
 				file: file
 			}
 		}).then(function (resp) {

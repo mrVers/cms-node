@@ -8,23 +8,23 @@ angular.module('app').controller('EditProjectCtrl', function ($scope, projectSer
 	$scope.requiredFields = "";
 	$scope.isUploading = false;
     $scope.uploadData = {
-    	progress:0
+		progress: 0
     };
 	
 	var authorId = $scope.project.author;
 
-	matchAuthorId = function () {
+	function matchAuthorId() {
 		
 		for (var i = 0; i < $scope.authors.length; i++) {
 			
-			let myAuthor = $scope.authors[i];
+			var myAuthor = $scope.authors[i];
 
 			console.log(myAuthor);
 
 			if (myAuthor._id === authorId) {
 
 				console.log('match!');
-				$scope.project.author = $scope.authors[i]
+				$scope.project.author = $scope.authors[i];
 
 			} else {
 				console.log('no match :(');
@@ -65,8 +65,8 @@ angular.module('app').controller('EditProjectCtrl', function ($scope, projectSer
 		$scope.isUploading = true;
 
 		Upload.upload({
-			url: 'http://localhost:3333/upload'
-			, data: {
+			url: 'http://localhost:3333/upload',
+			data: {
 				file: file
 			}
 		}).then(function (resp) {
