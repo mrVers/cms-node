@@ -2,6 +2,8 @@
 
 A simple Node.js CMS w/ Angular made for SAE assignment.
 
+![Node CMS](http://i.imgur.com/yzNBNq3.png)
+
 ### Requirements
 
 * Node.js
